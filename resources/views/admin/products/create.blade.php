@@ -19,7 +19,7 @@
         </div>
         <div class="mb-3">
             <label for="img" class="form-label">Product image</label>
-            <input type="text" class="form-control" id="img" name="img">
+            <input type="text" class="form-control" id="img" name="img" value="https://picsum.photos/200/300">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
