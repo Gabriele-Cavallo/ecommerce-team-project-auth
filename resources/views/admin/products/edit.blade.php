@@ -50,7 +50,7 @@
 {{-- Submit-return button --}}
 <button type="submit" class="btn btn-primary">Edit</button>
 <button class="btn btn-primary">
-    <a class="nav-link text-white" href="{{ route('admin.projects.index') }}">
+    <a class="nav-link text-white" href="{{ route('admin.products.index') }}">
         <i class="fa-solid fa-arrow-left fa-lg fa-fw"></i> Return
     </a>
 </button>
