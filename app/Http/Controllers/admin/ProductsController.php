@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ProductsController extends Controller
 {
@@ -16,7 +17,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        dd('ciao sono index');
+        $products = Product::all();
+        
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -68,9 +71,9 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -80,9 +83,13 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $produt)
     {
-        //
+        $formData = $request->all();
+        $product->slug = Str::slug($formData['name'], '-');
+        $product->update($formData);
+
+        return redirect()->route('admin.products.show', $product->slug);
     }
 
     /**
@@ -91,8 +98,11 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        {
+            $product->delete();
+            return redirect()->route('admin.products.index');
+        }
     }
 }
