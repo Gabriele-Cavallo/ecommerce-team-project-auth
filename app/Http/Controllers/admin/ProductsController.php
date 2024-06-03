@@ -29,7 +29,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/products/create');
     }
 
     /**
@@ -40,7 +40,18 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData = $request->all();
+        $newProduct = new Product;
+        $newProduct->name = $formData['name'];
+        $newProduct->price = $formData['price'];
+        $newProduct->description = $formData['description'];
+        $newProduct->img = $formData['img'];
+        $newProduct->slug = Str::slug($newProduct->name , '-');
+        $newProduct->save();
+
+        return redirect()->route('admin.products.show', ['product' => $newProduct->id]);
+        
+
     }
 
     /**
