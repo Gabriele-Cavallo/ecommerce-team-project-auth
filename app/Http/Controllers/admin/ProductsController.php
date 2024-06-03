@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -13,7 +13,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        dd('ciao sono index);
+        
+        return view('admin.products.index');
     }
 
     /**
