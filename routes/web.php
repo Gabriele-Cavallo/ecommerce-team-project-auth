@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductsController;
+use App\Http\Controllers\admin\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,7 @@ Route::middleware(['auth', 'verified'])
     //rotte amministrazione
     Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/products', ProductsController::class);
+    Route::resource('/users', UsersController::class);
 });
 
 Route::middleware('auth')->group(function () {
