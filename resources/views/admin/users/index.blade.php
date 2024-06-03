@@ -1,0 +1,19 @@
+@extends('layouts.admin')
+@section('content')
+    <table>
+        <tr>
+            <th>
+                nome
+            </th>
+            <th>
+                email
+            </th>
+        </tr>
+        @foreach ($users as $user)
+            <tr>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
+            </tr>
+        @endforeach
+    </table>
+@endsection
