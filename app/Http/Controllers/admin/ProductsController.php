@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductsController extends Controller
 {
@@ -13,7 +14,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        dd('ciao sono index);
+        dd('ciao sono index');
     }
 
     /**
@@ -43,9 +44,9 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view('admin.products.show', compact('product'));
     }
 
     /**

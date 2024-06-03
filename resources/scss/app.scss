@@ -1,1 +1,8 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+
+img{
+    &.product{
+        height: 150px;
+    }
+}
