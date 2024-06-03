@@ -15,7 +15,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        dd('ciao sono index');
+        $products = Product::all();
+        
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -79,8 +81,11 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        {
+            $product->delete();
+            return redirect()->route('admin.products.index');
+        }
     }
 }
