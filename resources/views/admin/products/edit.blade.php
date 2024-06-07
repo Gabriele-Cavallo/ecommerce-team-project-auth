@@ -30,7 +30,7 @@
 {{-- Price product input --}}
 <div class="mb-3">
     <label for="price" name="price" class="form-label">Price :</label>
-    <input type="text" class="form-control" id="price" name="client_name" aria-describedby="emailHelp" value="{{ old('price',$product->price)}}">
+    <input type="text" class="form-control" id="price" name="price" aria-describedby="emailHelp" value="{{ old('price',$product->price)}}">
 </div>
 @error('client_name')
     <div class="alert alert-danger">{{ $message }}</div>
