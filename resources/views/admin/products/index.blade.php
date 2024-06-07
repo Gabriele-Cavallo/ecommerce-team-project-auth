@@ -18,7 +18,7 @@
                 <a class="btn btn-primary" href="{{route('admin.products.edit', ['product'=> $product->slug])}}">Modificamelo</a>
             </div>
             <div class="bg-danger">
-                <form action="{{route('admin.products.destroy', ['product'=> $product->id])}}" method="POST">
+                <form action="{{route('admin.products.destroy', ['product'=> $product->slug])}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger" type="submit">cancellamelo</button>
