@@ -37,7 +37,7 @@
 @enderror
 {{-- /Price product input --}}
 
-{{-- Summary text area --}}
+{{-- Description text area --}}
 <div class="mb-3">
     <label for="description" name="description" class="form-label">Product description: </label>
     <textarea type="text" rows="10" class="form-control" id="description" name="description" aria-describedby="emailHelp">{{ old('description', $product->description)}}</textarea>
@@ -45,7 +45,7 @@
 @error('summary')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
-{{-- /Summary text area --}}
+{{-- /Description text area --}}
 
 {{-- Submit-return button --}}
 <button type="submit" class="btn btn-primary">Edit</button>
