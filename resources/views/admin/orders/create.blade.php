@@ -23,4 +23,23 @@
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
+    <div class="container">
+        <div class="row">
+
+            @foreach ($products as $product)
+            
+            <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{$product->img}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{$product->name}}</h5>
+              <div><strong>{{$product->price}}</strong></div>
+              <p class="card-text">{{$product->description}}</p>
+    
+              <a href="{{route('admin.products.show', $product->id)}}" class="btn btn-primary">View</a>
+            </div>
+          </div>
+          
+          @endforeach
+        </div>
+    </div>
 @endsection
