@@ -39,7 +39,19 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+
+        $validated = $request->validate([
+            'name' => 'required|unique:products,name|min:5|max:200',
+            'price' => 'numeric|min:1|max:1000|',
+            'description' => 'nullable|min:10|max:500',
+            
+        ]
+    
+        );
+
+
+
         $formData = $request->all();
         $newProduct = new Product;
         $newProduct->name = $formData['name'];
