@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 
-class Orders extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
