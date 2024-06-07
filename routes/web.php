@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductsController;
 use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\admin\OrdersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,7 @@ Route::middleware(['auth', 'verified'])
     Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/products', ProductsController::class);
     Route::resource('/users', UsersController::class);
+    Route::resource('/orders', OrdersController::class);
 });
 
 Route::middleware('auth')->group(function () {
