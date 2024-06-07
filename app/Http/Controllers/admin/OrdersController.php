@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Product;
 
 
 class OrdersController extends Controller
@@ -27,7 +28,8 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('admin.orders.create');
+        $products=Product::all();
+        return view('admin.orders.create',compact('products'));
     }
 
     /**
