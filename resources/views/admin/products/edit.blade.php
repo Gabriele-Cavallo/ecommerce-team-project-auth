@@ -30,22 +30,22 @@
 {{-- Price product input --}}
 <div class="mb-3">
     <label for="price" name="price" class="form-label">Price :</label>
-    <input type="text" class="form-control" id="price" name="client_name" aria-describedby="emailHelp" value="{{ old('price',$product->price)}}">
+    <input type="text" class="form-control" id="price" name="price" aria-describedby="emailHelp" value="{{ old('price',$product->price)}}">
 </div>
 @error('client_name')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
 {{-- /Price product input --}}
 
-{{-- Summary text area --}}
+{{-- Description text area --}}
 <div class="mb-3">
     <label for="description" name="description" class="form-label">Product description: </label>
-    <textarea type="text" rows="10" class="form-control" id="description" name="summary" aria-describedby="emailHelp">{{ old('description', $product->description)}}</textarea>
+    <textarea type="text" rows="10" class="form-control" id="description" name="description" aria-describedby="emailHelp">{{ old('description', $product->description)}}</textarea>
 </div>
 @error('summary')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
-{{-- /Summary text area --}}
+{{-- /Description text area --}}
 
 {{-- Submit-return button --}}
 <button type="submit" class="btn btn-primary">Edit</button>
