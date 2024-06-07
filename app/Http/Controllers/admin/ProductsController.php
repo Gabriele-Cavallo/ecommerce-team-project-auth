@@ -61,7 +61,7 @@ class ProductsController extends Controller
         $newProduct->slug = Str::slug($newProduct->name , '-');
         $newProduct->save();
 
-        return redirect()->route('admin.products.show', ['product' => $newProduct->id]);
+        return redirect()->route('admin.products.show', ['product' => $newProduct->slug]);
         
 
     }
