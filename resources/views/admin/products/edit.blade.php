@@ -40,7 +40,7 @@
 {{-- Summary text area --}}
 <div class="mb-3">
     <label for="description" name="description" class="form-label">Product description: </label>
-    <textarea type="text" rows="10" class="form-control" id="description" name="summary" aria-describedby="emailHelp">{{ old('description', $product->description)}}</textarea>
+    <textarea type="text" rows="10" class="form-control" id="description" name="description" aria-describedby="emailHelp">{{ old('description', $product->description)}}</textarea>
 </div>
 @error('summary')
     <div class="alert alert-danger">{{ $message }}</div>
