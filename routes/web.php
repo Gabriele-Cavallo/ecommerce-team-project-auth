@@ -27,7 +27,9 @@ Route::middleware(['auth', 'verified'])
 ->group(function(){
     //rotte amministrazione
     Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('/products', ProductsController::class);
+    Route::resource('/products', ProductsController::class)->parameters([
+        'products' => 'product:slug'
+    ]);
     Route::resource('/users', UsersController::class);
     Route::resource('/orders', OrdersController::class);
 });

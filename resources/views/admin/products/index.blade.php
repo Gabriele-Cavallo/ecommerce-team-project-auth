@@ -14,8 +14,8 @@
                 <div><strong>{{$product->price}}€</strong></div>
             </div>
             <div>
-                <a class="btn btn-primary" href="{{route('admin.products.show', ['product'=> $product->id])}}">Mostramelo</a>
-                <a class="btn btn-primary" href="{{route('admin.products.edit', ['product'=> $product->id])}}">Modificamelo</a>
+                <a class="btn btn-primary" href="{{route('admin.products.show', ['product'=> $product->slug])}}">Mostramelo</a>
+                <a class="btn btn-primary" href="{{route('admin.products.edit', ['product'=> $product->slug])}}">Modificamelo</a>
             </div>
             <div class="bg-danger">
                 <form action="{{route('admin.products.destroy', ['product'=> $product->id])}}" method="POST">

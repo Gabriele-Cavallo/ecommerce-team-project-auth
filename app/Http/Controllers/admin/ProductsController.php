@@ -43,7 +43,7 @@ class ProductsController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|unique:products,name|min:5|max:200',
-            'price' => 'numeric|min:1|max:1000|',
+            'price' => 'decimal:2|min:1|max:1000|',
             'description' => 'nullable|min:10|max:500',
             
         ]
@@ -61,7 +61,7 @@ class ProductsController extends Controller
         $newProduct->slug = Str::slug($newProduct->name , '-');
         $newProduct->save();
 
-        return redirect()->route('admin.products.show', ['product' => $newProduct->id]);
+        return redirect()->route('admin.products.show', ['product' => $newProduct->slug]);
         
 
     }
@@ -95,13 +95,32 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $produt)
+    public function update(Request $request, Product $product)
     {
+
+        $validated = $request->validate([
+            'name' => [
+                'required',
+                'min:5',
+                'max:200',
+                Rule::unique('products')->ignore($product->id),
+            ],
+            // 'name' => 'required|unique:products,name|min:5|max:200',
+            // 'price' => 'decimal:2|min:1|max:1000|',
+            'description' => 'nullable|min:10|max:500',
+            
+        ]
+    
+        );
+
+
+
         $formData = $request->all();
         $product->slug = Str::slug($formData['name'], '-');
         $product->update($formData);
 
-        return redirect()->route('admin.products.show', $product->slug);
+        
+        return redirect()->route('admin.products.show', ['product' => $product->slug]);
     }
 
     /**
