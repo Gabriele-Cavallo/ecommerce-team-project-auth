@@ -27,7 +27,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('admin/orders/create');
+        return view('admin.orders.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class OrdersController extends Controller
         $newOrder->amount = $formData['amount'];
         $newOrder->save();
 
-        return redirect()->route('admin/orders/show', $newOrder->id);
+        return redirect()->route('admin.orders.show', $newOrder->id);
     }
 
     /**
@@ -55,9 +55,9 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+        return view('admin.orders.show', compact('order'));
     }
 
     /**
