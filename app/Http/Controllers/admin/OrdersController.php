@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Product;
+
 
 class OrdersController extends Controller
 {
@@ -15,7 +17,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        return view('admin.orders.index');
+        $orders= Order::all();
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
@@ -25,7 +28,8 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('admin/orders/create');
+        $products=Product::all();
+        return view('admin.orders.create',compact('products'));
     }
 
     /**
@@ -44,7 +48,7 @@ class OrdersController extends Controller
         $newOrder->amount = $formData['amount'];
         $newOrder->save();
 
-        return redirect()->route('admin/orders/show', $newOrder->id);
+        return redirect()->route('admin.orders.show', $newOrder->id);
     }
 
     /**
@@ -53,9 +57,9 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+        return view('admin.orders.show', compact('order'));
     }
 
     /**
