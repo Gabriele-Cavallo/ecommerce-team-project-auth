@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class OrdersController extends Controller
 {
@@ -24,7 +25,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/orders/create');
     }
 
     /**
@@ -35,7 +36,15 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData = $request->all();
+        $newOrder = new Order();
+        $newOrder->price = $formData['price'];
+        $newOrder->date = $formData['date'];
+        $newOrder->address = $formData['address'];
+        $newOrder->amount = $formData['amount'];
+        $newOrder->save();
+
+        return redirect()->route('admin/orders/show', $newOrder->id);
     }
 
     /**
